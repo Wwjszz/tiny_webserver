@@ -1,0 +1,6 @@
+{
+  "files.associations": {
+    "semaphore": "cpp",
+    "atomic": "cpp"
+  }
+}

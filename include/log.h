@@ -6,8 +6,8 @@
 #include <string>
 #include <thread>
 
-#include "../buffer/buffer.h"
 #include "block_queue.hpp"
+#include "buffer.h"
 
 class log {
  public:
