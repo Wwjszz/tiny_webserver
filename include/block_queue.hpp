@@ -34,7 +34,7 @@ class block_queue {
 
 template <class T>
 block_queue<T>::block_queue(int maxsize)
-    : m_size_(maxsize), s_empty_(m_size_), s_full_(0) {}
+    : m_size_(maxsize), s_empty_(maxsize), s_full_(0) {}
 
 template <class T>
 block_queue<T>::~block_queue() {
@@ -89,7 +89,7 @@ bool block_queue<T>::pop(T& item, int timeout) {
     item = std::move(deq_.front());
     deq_.pop_front();
     u_lock_.unlock();
-    s_full_.release();
+    s_empty_.release();
     return true;
   }
   return false;

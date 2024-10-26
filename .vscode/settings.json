@@ -1,6 +1,10 @@
 {
   "files.associations": {
     "semaphore": "cpp",
-    "atomic": "cpp"
+    "atomic": "cpp",
+    "*.tcc": "cpp",
+    "ostream": "cpp",
+    "fstream": "cpp",
+    "shared_mutex": "cpp"
   }
 }

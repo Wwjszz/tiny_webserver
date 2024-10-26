@@ -14,7 +14,7 @@ class log {
   void init(int level, const char *path = "./log", const char *suffix = ".log",
             int max_queue_capacity = 1024);
 
-  static log *Instance();
+  static log *instance();
   static void flush_log_thread();
 
   void write(int level, const char *format, ...);
@@ -58,5 +58,31 @@ class log {
   std::unique_ptr<std::thread> write_thread_ptr;
   std::mutex mutex_;
 };
+
+#define LOG_BASE(level, format, ...)                 \
+  do {                                               \
+    log *lg = log::instance();                       \
+    if (lg->is_open() && lg->get_level() <= level) { \
+      lg->write(level, format, ##__VA_ARGS__);       \
+      lg->flush();                                   \
+    }                                                \
+  } while (0);
+
+#define LOG_DEBUG(format, ...)         \
+  do {                                 \
+    LOG_BASE(0, format, ##__VA_ARGS__) \
+  } while (0);
+#define LOG_INFO(format, ...)          \
+  do {                                 \
+    LOG_BASE(1, format, ##__VA_ARGS__) \
+  } while (0);
+#define LOG_WARN(format, ...)          \
+  do {                                 \
+    LOG_BASE(2, format, ##__VA_ARGS__) \
+  } while (0);
+#define LOG_ERROR(format, ...)         \
+  do {                                 \
+    LOG_BASE(3, format, ##__VA_ARGS__) \
+  } while (0);
 
 #endif

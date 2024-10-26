@@ -4,7 +4,8 @@
 
 log::~log() {
   is_thread_close = true;
-  write_thread_ptr->join();
+  if (write_thread_ptr && write_thread_ptr->joinable())
+    write_thread_ptr->join();
   if (m_fp_) {
     flush();
     fclose(m_fp_);
@@ -19,13 +20,14 @@ void log::async_write() {
     while (deq_ptr_->pop(str, 1)) {
       std::lock_guard lk_(mutex_);
       fputs(str.c_str(), m_fp_);
+      flush();
     }
   }
 }
 
-void log::flush_log_thread() { log::Instance()->async_write(); }
+void log::flush_log_thread() { log::instance()->async_write(); }
 
-log *log::Instance() {
+log *log::instance() {
   static log lg;
   return &lg;
 }
@@ -50,6 +52,7 @@ void log::init(int level, const char *path, const char *suffix,
   snprintf(filename, LOG_NAME_LEN, "%s/%04d_%02d_%02d%s", path_,
            systime->tm_year + 1900, systime->tm_mon + 1, systime->tm_mday,
            suffix_);
+  printf("filename : %s\n", filename);
   today_ = systime->tm_mday;
 
   m_fp_ = fopen(filename, "a");
@@ -104,12 +107,14 @@ void log::write(int level, const char *format, ...) {
   va_end(arg_list);
 
   buff_.has_writen(m);
-  buff_.append("\n\0", 2);
+  buff_.append("\n", 2);
+
   if (is_async && deq_ptr_ && !deq_ptr_->full()) {
     deq_ptr_->push_back(buff_.retrieve_all_as_string());
   } else {
     fputs(buff_.peek(), m_fp_);
   }
+  buff_.retrieve_all();
 }
 
 void log::append_log_level_title(int level) {
@@ -118,10 +123,10 @@ void log::append_log_level_title(int level) {
       buff_.append("[debug]: ", 9);
       break;
     case 1:
-      buff_.append("[info]: ", 9);
+      buff_.append("[info]: ", 8);
       break;
     case 2:
-      buff_.append("[warn]: ", 9);
+      buff_.append("[warn]: ", 8);
       break;
     case 3:
       buff_.append("[error]: ", 9);

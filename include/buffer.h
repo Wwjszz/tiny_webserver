@@ -84,6 +84,10 @@ class buffer {
         const_cast<buffer *>(this)->write_begin_());
   }
 
+  void output() {
+    printf("%s\n", std::string(peek(), readable_bytes()).c_str());
+  }
+
  private:
   static const size_t prepend_ = 8;
   static const size_t initial_size_ = 1024;
