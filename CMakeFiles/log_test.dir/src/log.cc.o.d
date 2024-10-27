@@ -239,4 +239,6 @@ CMakeFiles/log_test.dir/src/log.cc.o: /home/tiny_webserver/src/log.cc \
  /opt/rh/gcc-toolset-13/root/usr/include/c++/13/shared_mutex \
  /home/tiny_webserver/include/buffer.h /usr/include/assert.h \
  /opt/rh/gcc-toolset-13/root/usr/include/c++/13/utility \
- /opt/rh/gcc-toolset-13/root/usr/include/c++/13/bits/stl_relops.h
+ /opt/rh/gcc-toolset-13/root/usr/include/c++/13/bits/stl_relops.h \
+ /opt/rh/gcc-toolset-13/root/usr/include/c++/13/cstring \
+ /usr/include/string.h /usr/include/strings.h

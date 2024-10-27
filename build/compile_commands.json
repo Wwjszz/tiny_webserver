@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/tiny_webserver/build",
+  "command": "/opt/rh/gcc-toolset-13/root/usr/bin/g++  -I/home/tiny_webserver/include  -L/usr/lib64/mysql -lmysqlclient -lpthread -g -std=gnu++20 -o CMakeFiles/log_test.dir/test/test.cc.o -c /home/tiny_webserver/test/test.cc",
+  "file": "/home/tiny_webserver/test/test.cc",
+  "output": "CMakeFiles/log_test.dir/test/test.cc.o"
+},
+{
+  "directory": "/home/tiny_webserver/build",
+  "command": "/opt/rh/gcc-toolset-13/root/usr/bin/g++  -I/home/tiny_webserver/include  -L/usr/lib64/mysql -lmysqlclient -lpthread -g -std=gnu++20 -o CMakeFiles/log_test.dir/src/log.cc.o -c /home/tiny_webserver/src/log.cc",
+  "file": "/home/tiny_webserver/src/log.cc",
+  "output": "CMakeFiles/log_test.dir/src/log.cc.o"
+},
+{
+  "directory": "/home/tiny_webserver/build",
+  "command": "/opt/rh/gcc-toolset-13/root/usr/bin/g++  -I/home/tiny_webserver/include  -L/usr/lib64/mysql -lmysqlclient -lpthread -g -std=gnu++20 -o CMakeFiles/log_test.dir/src/buffer.cc.o -c /home/tiny_webserver/src/buffer.cc",
+  "file": "/home/tiny_webserver/src/buffer.cc",
+  "output": "CMakeFiles/log_test.dir/src/buffer.cc.o"
+},
+{
+  "directory": "/home/tiny_webserver/build",
+  "command": "/opt/rh/gcc-toolset-13/root/usr/bin/g++  -I/home/tiny_webserver/include  -L/usr/lib64/mysql -lmysqlclient -lpthread -g -std=gnu++20 -o CMakeFiles/log_test.dir/src/sql_connpool.cc.o -c /home/tiny_webserver/src/sql_connpool.cc",
+  "file": "/home/tiny_webserver/src/sql_connpool.cc",
+  "output": "CMakeFiles/log_test.dir/src/sql_connpool.cc.o"
+}
+]

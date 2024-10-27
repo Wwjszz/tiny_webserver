@@ -69,19 +69,19 @@ include CMakeFiles/log_test.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/log_test.dir/flags.make
 
-CMakeFiles/log_test.dir/src/log_test.cc.o: CMakeFiles/log_test.dir/flags.make
-CMakeFiles/log_test.dir/src/log_test.cc.o: src/log_test.cc
-CMakeFiles/log_test.dir/src/log_test.cc.o: CMakeFiles/log_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiny_webserver/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/log_test.dir/src/log_test.cc.o"
-	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/log_test.dir/src/log_test.cc.o -MF CMakeFiles/log_test.dir/src/log_test.cc.o.d -o CMakeFiles/log_test.dir/src/log_test.cc.o -c /home/tiny_webserver/src/log_test.cc
+CMakeFiles/log_test.dir/test/test.cc.o: CMakeFiles/log_test.dir/flags.make
+CMakeFiles/log_test.dir/test/test.cc.o: test/test.cc
+CMakeFiles/log_test.dir/test/test.cc.o: CMakeFiles/log_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiny_webserver/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/log_test.dir/test/test.cc.o"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/log_test.dir/test/test.cc.o -MF CMakeFiles/log_test.dir/test/test.cc.o.d -o CMakeFiles/log_test.dir/test/test.cc.o -c /home/tiny_webserver/test/test.cc
 
-CMakeFiles/log_test.dir/src/log_test.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/log_test.dir/src/log_test.cc.i"
-	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiny_webserver/src/log_test.cc > CMakeFiles/log_test.dir/src/log_test.cc.i
+CMakeFiles/log_test.dir/test/test.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/log_test.dir/test/test.cc.i"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiny_webserver/test/test.cc > CMakeFiles/log_test.dir/test/test.cc.i
 
-CMakeFiles/log_test.dir/src/log_test.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/log_test.dir/src/log_test.cc.s"
-	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiny_webserver/src/log_test.cc -o CMakeFiles/log_test.dir/src/log_test.cc.s
+CMakeFiles/log_test.dir/test/test.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/log_test.dir/test/test.cc.s"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiny_webserver/test/test.cc -o CMakeFiles/log_test.dir/test/test.cc.s
 
 CMakeFiles/log_test.dir/src/log.cc.o: CMakeFiles/log_test.dir/flags.make
 CMakeFiles/log_test.dir/src/log.cc.o: src/log.cc
@@ -111,21 +111,37 @@ CMakeFiles/log_test.dir/src/buffer.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/log_test.dir/src/buffer.cc.s"
 	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiny_webserver/src/buffer.cc -o CMakeFiles/log_test.dir/src/buffer.cc.s
 
+CMakeFiles/log_test.dir/src/sql_connpool.cc.o: CMakeFiles/log_test.dir/flags.make
+CMakeFiles/log_test.dir/src/sql_connpool.cc.o: src/sql_connpool.cc
+CMakeFiles/log_test.dir/src/sql_connpool.cc.o: CMakeFiles/log_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiny_webserver/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/log_test.dir/src/sql_connpool.cc.o"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/log_test.dir/src/sql_connpool.cc.o -MF CMakeFiles/log_test.dir/src/sql_connpool.cc.o.d -o CMakeFiles/log_test.dir/src/sql_connpool.cc.o -c /home/tiny_webserver/src/sql_connpool.cc
+
+CMakeFiles/log_test.dir/src/sql_connpool.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/log_test.dir/src/sql_connpool.cc.i"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiny_webserver/src/sql_connpool.cc > CMakeFiles/log_test.dir/src/sql_connpool.cc.i
+
+CMakeFiles/log_test.dir/src/sql_connpool.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/log_test.dir/src/sql_connpool.cc.s"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiny_webserver/src/sql_connpool.cc -o CMakeFiles/log_test.dir/src/sql_connpool.cc.s
+
 # Object files for target log_test
 log_test_OBJECTS = \
-"CMakeFiles/log_test.dir/src/log_test.cc.o" \
+"CMakeFiles/log_test.dir/test/test.cc.o" \
 "CMakeFiles/log_test.dir/src/log.cc.o" \
-"CMakeFiles/log_test.dir/src/buffer.cc.o"
+"CMakeFiles/log_test.dir/src/buffer.cc.o" \
+"CMakeFiles/log_test.dir/src/sql_connpool.cc.o"
 
 # External object files for target log_test
 log_test_EXTERNAL_OBJECTS =
 
-log_test: CMakeFiles/log_test.dir/src/log_test.cc.o
+log_test: CMakeFiles/log_test.dir/test/test.cc.o
 log_test: CMakeFiles/log_test.dir/src/log.cc.o
 log_test: CMakeFiles/log_test.dir/src/buffer.cc.o
+log_test: CMakeFiles/log_test.dir/src/sql_connpool.cc.o
 log_test: CMakeFiles/log_test.dir/build.make
 log_test: CMakeFiles/log_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tiny_webserver/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable log_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tiny_webserver/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable log_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/log_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

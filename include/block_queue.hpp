@@ -6,6 +6,7 @@
 #include <mutex>
 #include <semaphore>
 #include <shared_mutex>
+#include <thread>
 
 template <class T>
 class block_queue {
@@ -13,6 +14,7 @@ class block_queue {
   block_queue(int maxsize = 1000);
   ~block_queue();
   bool empty();
+  void waiting_empty();
   bool full();
   void push_back(T&& item);
   void push_front(T&& item);
@@ -126,6 +128,13 @@ template <class T>
 size_t block_queue<T>::size() {
   std::shared_lock s_lock_(s_mutex_);
   return deq_.size();
+}
+
+template <class T>
+void block_queue<T>::waiting_empty() {
+  while (!empty()) {
+    std::this_thread::yield();
+  }
 }
 
 // void close();

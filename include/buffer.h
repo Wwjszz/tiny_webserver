@@ -39,7 +39,6 @@ class buffer {
     }
     assert(len <= writeable_bytes());
   }
-  void has_writen(size_t len) { write_index_ += len; }
 
   void retrieve(size_t len) {
     assert(len <= readable_bytes());
@@ -68,6 +67,8 @@ class buffer {
     retrieve(len);
     return result;
   }
+
+  ssize_t read(char *dest, size_t len);
 
   void append(const char *data, size_t len);
   void append(const std::string &str);
@@ -100,6 +101,7 @@ class buffer {
     return static_cast<const char *>(const_cast<buffer *>(this)->begin_());
   }
 
+  void has_writen(size_t len) { write_index_ += len; }
   void make_space_(size_t len);
 };
 

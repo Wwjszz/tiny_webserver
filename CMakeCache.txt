@@ -148,7 +148,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Project
+CMAKE_PROJECT_NAME:STATIC=tiny_webserver
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/opt/rh/gcc-toolset-13/root/usr/bin/ranlib
@@ -220,6 +220,15 @@ Project_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 Project_SOURCE_DIR:STATIC=/home/tiny_webserver
+
+//Value Computed by CMake
+tiny_webserver_BINARY_DIR:STATIC=/home/tiny_webserver
+
+//Value Computed by CMake
+tiny_webserver_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+tiny_webserver_SOURCE_DIR:STATIC=/home/tiny_webserver
 
 
 ########################

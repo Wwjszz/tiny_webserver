@@ -3,6 +3,9 @@
 #include <sys/uio.h>
 #include <unistd.h>
 
+#include <algorithm>
+#include <cstring>
+
 buffer::buffer()
     : buffer_(prepend_ + initial_size_),
       read_index_(prepend_),
@@ -10,6 +13,14 @@ buffer::buffer()
   assert(readable_bytes() == 0);
   assert(writeable_bytes() == initial_size_);
   assert(prepend_bytes() == prepend_);
+}
+
+ssize_t buffer::read(char* dest, size_t len) {
+  if (len < 0) return -1;
+  size_t a_len = std::min(readable_bytes(), len);
+  strncpy(dest, peek(), a_len);
+  retrieve(a_len);
+  return a_len;
 }
 
 void buffer::append(const char* data, size_t len) {

@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/tiny_webserver/include
 
-CXX_FLAGS = -pthread -std=gnu++20
+CXX_FLAGS =  -L/usr/lib64/mysql -lmysqlclient -lpthread -std=gnu++20
 

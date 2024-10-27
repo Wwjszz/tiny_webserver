@@ -18,11 +18,10 @@ class log {
   static void flush_log_thread();
 
   void write(int level, const char *format, ...);
-  void flush();
+  // void flush();
 
   bool is_open() { return is_open_; }
 
-  // FIXME: THREAD PROBLEM
   int get_level() { return level_; }
   void set_level(int level) { level_ = level; }
 
@@ -51,12 +50,13 @@ class log {
   bool is_async;
 
   FILE *m_fp_;
+  std::shared_mutex s_mutex_;
   char *m_buf_;
   std::unique_ptr<block_queue<std::string>> deq_ptr_;
   bool is_thread_close;
   size_t timeout{1};
   std::unique_ptr<std::thread> write_thread_ptr;
-  std::mutex mutex_;
+  std::mutex mutex_, file_mutex_;
 };
 
 #define LOG_BASE(level, format, ...)                 \
@@ -64,7 +64,6 @@ class log {
     log *lg = log::instance();                       \
     if (lg->is_open() && lg->get_level() <= level) { \
       lg->write(level, format, ##__VA_ARGS__);       \
-      lg->flush();                                   \
     }                                                \
   } while (0);
 

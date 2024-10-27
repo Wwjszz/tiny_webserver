@@ -177,29 +177,53 @@ src/log.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/src/log.cc.s
 .PHONY : src/log.cc.s
 
-src/log_test.o: src/log_test.cc.o
-.PHONY : src/log_test.o
+src/sql_connpool.o: src/sql_connpool.cc.o
+.PHONY : src/sql_connpool.o
 
 # target to build an object file
-src/log_test.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/src/log_test.cc.o
-.PHONY : src/log_test.cc.o
+src/sql_connpool.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/src/sql_connpool.cc.o
+.PHONY : src/sql_connpool.cc.o
 
-src/log_test.i: src/log_test.cc.i
-.PHONY : src/log_test.i
+src/sql_connpool.i: src/sql_connpool.cc.i
+.PHONY : src/sql_connpool.i
 
 # target to preprocess a source file
-src/log_test.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/src/log_test.cc.i
-.PHONY : src/log_test.cc.i
+src/sql_connpool.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/src/sql_connpool.cc.i
+.PHONY : src/sql_connpool.cc.i
 
-src/log_test.s: src/log_test.cc.s
-.PHONY : src/log_test.s
+src/sql_connpool.s: src/sql_connpool.cc.s
+.PHONY : src/sql_connpool.s
 
 # target to generate assembly for a file
-src/log_test.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/src/log_test.cc.s
-.PHONY : src/log_test.cc.s
+src/sql_connpool.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/src/sql_connpool.cc.s
+.PHONY : src/sql_connpool.cc.s
+
+test/test.o: test/test.cc.o
+.PHONY : test/test.o
+
+# target to build an object file
+test/test.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/test/test.cc.o
+.PHONY : test/test.cc.o
+
+test/test.i: test/test.cc.i
+.PHONY : test/test.i
+
+# target to preprocess a source file
+test/test.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/test/test.cc.i
+.PHONY : test/test.cc.i
+
+test/test.s: test/test.cc.s
+.PHONY : test/test.s
+
+# target to generate assembly for a file
+test/test.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/test/test.cc.s
+.PHONY : test/test.cc.s
 
 # Help Target
 help:
@@ -216,9 +240,12 @@ help:
 	@echo "... src/log.o"
 	@echo "... src/log.i"
 	@echo "... src/log.s"
-	@echo "... src/log_test.o"
-	@echo "... src/log_test.i"
-	@echo "... src/log_test.s"
+	@echo "... src/sql_connpool.o"
+	@echo "... src/sql_connpool.i"
+	@echo "... src/sql_connpool.s"
+	@echo "... test/test.o"
+	@echo "... test/test.i"
+	@echo "... test/test.s"
 .PHONY : help
 
 
