@@ -9,6 +9,7 @@
 
 #include <assert.h>
 
+#include <algorithm>
 #include <cstddef>
 #include <string>
 #include <utility>
@@ -69,6 +70,7 @@ class buffer {
   }
 
   ssize_t read(char *dest, size_t len);
+  std::string search(const char *src, size_t len);
 
   void append(const char *data, size_t len);
   void append(const std::string &str);
@@ -78,12 +80,6 @@ class buffer {
 
   ssize_t read_fd(int fd, int &Errno);
   ssize_t write_fd(int fd, int &Errno);
-
-  char *write_begin_() { return begin_() + write_index_; }
-  const char *write_begin_() const {
-    return static_cast<const char *>(
-        const_cast<buffer *>(this)->write_begin_());
-  }
 
   void output() {
     printf("%s\n", std::string(peek(), readable_bytes()).c_str());
@@ -103,6 +99,13 @@ class buffer {
 
   void has_writen(size_t len) { write_index_ += len; }
   void make_space_(size_t len);
+
+  char *write_begin_() { return begin_() + write_index_; }
+  const char *write_begin_() const {
+    return static_cast<const char *>(
+        const_cast<buffer *>(this)->write_begin_());
+  }
+  const char *write_begin_const_() { return write_begin_(); }
 };
 
 #endif

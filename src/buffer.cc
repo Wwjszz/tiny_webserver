@@ -82,3 +82,10 @@ ssize_t buffer::write_fd(int fd, int& Errno) {
   retrieve(len);
   return len;
 }
+
+std::string buffer::search(const char* start, size_t len) {
+  const char* end =
+      std::search(peek(), write_begin_const_(), start, start + len);
+  retrieve_until(end);
+  return std::string(peek(), end);
+}
