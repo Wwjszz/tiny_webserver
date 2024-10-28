@@ -83,9 +83,12 @@ ssize_t buffer::write_fd(int fd, int& Errno) {
   return len;
 }
 
-std::string buffer::search(const char* start, size_t len) {
+std::pair<bool, std::string> buffer::search(const char* start, size_t len) {
   const char* end =
       std::search(peek(), write_begin_const_(), start, start + len);
+  if (end == write_begin_const_()) {
+    return {false, ""};
+  }
   retrieve_until(end);
-  return std::string(peek(), end);
+  return {true, std::string(peek(), end)};
 }

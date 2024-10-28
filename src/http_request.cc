@@ -69,7 +69,7 @@ void http_request::parse_header_(const std::string &line) {
 }
 
 void http_request::parse_body_(const std::string &line) {
-  body_ = line;
+  body_ = line.substr(0, std::stoi(header_["Content-length"]));
   parse_post_();
   state_ = PARSE_STATE::FINISH;
   LOG_DEBUG("body:%s, len:%d", line.c_str(), line.size());
@@ -132,8 +132,23 @@ bool http_request::parse(buffer &buff) {
     return false;
   }
 
+  // FIXME: MAYBE BUG
   while (buff.readable_bytes() && state_ != PARSE_STATE::FINISH) {
-    std::string line = buff.search(CRLF, 2);
+    std::string line;
+    if (state_ != PARSE_STATE::BODY) {
+      auto res = buff.search(CRLF, 2);
+      if (res.first == false) break;
+      line = std::move(res.second);
+    } else {
+      if (!header_.contains("Content-length")) {
+        state_ = PARSE_STATE::FINISH;
+        break;
+      }
+      if (buff.readable_bytes() < std::stoi(header_["Content-length"])) {
+        break;
+      }
+      line = buff.retrieve_as_string(std::stoi(header_["Content-length"]));
+    }
     switch (state_) {
       case PARSE_STATE::REQUEST_LINE:
         if (!parse_request_line_(line)) {
@@ -144,21 +159,20 @@ bool http_request::parse(buffer &buff) {
         break;
       case PARSE_STATE::HEADERS:
         parse_header_(line);
-        if (buff.readable_bytes() <= 2) {
-          state_ = PARSE_STATE::FINISH;
-        }
         break;
       case PARSE_STATE::BODY:
         parse_body_(line);
         break;
-      case PARSE_STATE::FINISH:
-        break;
       default:
         break;
     }
-    if (buff.readable_bytes()) {
+    if (state_ != PARSE_STATE::FINISH && buff.readable_bytes()) {
       buff.retrieve(2);
     }
+  }
+
+  if (state_ != PARSE_STATE::FINISH) {
+    return false;
   }
 
   LOG_DEBUG("[%s], [%s], [%s]", method_.c_str(), path_.c_str(),

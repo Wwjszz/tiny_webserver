@@ -33,11 +33,11 @@ class http_response {
 
   std::string file_type_();
 
-  // TODO: ADD REAL_PATH
   std::string path_;
   std::string dir_;
+  const std::string real_path() { return path_ + dir_; }
 
-  int code_;
+  int code_ = -1;
   bool is_keep_alive_;
 
   char *mm_file_;

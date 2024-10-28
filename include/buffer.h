@@ -70,7 +70,7 @@ class buffer {
   }
 
   ssize_t read(char *dest, size_t len);
-  std::string search(const char *src, size_t len);
+  std::pair<bool, std::string> search(const char *src, size_t len);
 
   void append(const char *data, size_t len);
   void append(const std::string &str);

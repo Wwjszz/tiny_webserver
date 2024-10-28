@@ -4,6 +4,42 @@
 
 #include "log.h"
 
+const std::unordered_map<std::string, std::string> http_response::SUFFIX_TYPE_ =
+    {
+        {".html", "text/html"},
+        {".xml", "text/xml"},
+        {".xhtml", "application/xhtml+xml"},
+        {".txt", "text/plain"},
+        {".rtf", "application/rtf"},
+        {".pdf", "application/pdf"},
+        {".word", "application/nsword"},
+        {".png", "image/png"},
+        {".gif", "image/gif"},
+        {".jpg", "image/jpeg"},
+        {".jpeg", "image/jpeg"},
+        {".au", "audio/basic"},
+        {".mpeg", "video/mpeg"},
+        {".mpg", "video/mpeg"},
+        {".avi", "video/x-msvideo"},
+        {".gz", "application/x-gzip"},
+        {".tar", "application/x-tar"},
+        {".css", "text/css "},
+        {".js", "text/javascript "},
+};
+
+const std::unordered_map<int, std::string> http_response::CODE_STATUS_ = {
+    {200, "OK"},
+    {400, "Bad Request"},
+    {403, "Forbidden"},
+    {404, "Not Found"},
+};
+
+const std::unordered_map<int, std::string> http_response::CODE_PATH_ = {
+    {400, "/400.html"},
+    {403, "/403.html"},
+    {404, "/404.html"},
+};
+
 void http_response::init(const std::string& dir, const std::string& path,
                          bool is_keep_alive, int code) {
   if (mm_file) {
@@ -40,7 +76,7 @@ failed:
 void http_response::error_html() {
   if (CODE_PATH_.contains(code_)) {
     path_ = CODE_PATH_.at(code_);
-    stat((dir_ + path_).c_str(), &mm_file_stat_);
+    stat(real_path().c_str(), &mm_file_stat_);
   }
 }
 
@@ -83,7 +119,7 @@ void http_response::add_response_header_(buffer& buff) {
 }
 
 void http_response::add_response_content_(buffer& buff) {
-  int src_fd = open((dir_ + path_).c_str(), O_RDONLY);
+  int src_fd = open(real_path().c_str(), O_RDONLY);
   if (src_fd == -1) {
     error_content(buff, "Not found");
     return;
@@ -104,7 +140,7 @@ void http_response::add_response_content_(buffer& buff) {
 }
 
 void http_response::make_response(buffer& buff) {
-  if (stat((dir_ + path_).c_str(), &mm_file_stat_) < 0 ||
+  if (stat(real_path().c_str(), &mm_file_stat_) < 0 ||
       S_ISDIR(mm_file_stat_.st_mode)) {
     code_ = 404;
   } else if (!(mm_file_stat_.st_mode & S_IROTH)) {
