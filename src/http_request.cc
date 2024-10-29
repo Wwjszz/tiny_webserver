@@ -69,7 +69,7 @@ void http_request::parse_header_(const std::string &line) {
 }
 
 void http_request::parse_body_(const std::string &line) {
-  body_ = line.substr(0, std::stoi(header_["Content-length"]));
+  body_ = line;
   parse_post_();
   state_ = PARSE_STATE::FINISH;
   LOG_DEBUG("body:%s, len:%d", line.c_str(), line.size());
@@ -144,10 +144,11 @@ bool http_request::parse(buffer &buff) {
         state_ = PARSE_STATE::FINISH;
         break;
       }
-      if (buff.readable_bytes() < std::stoi(header_["Content-length"])) {
+      size_t content_length = std::stoi(header_["Content-length"]);
+      if (buff.readable_bytes() < content_length) {
         break;
       }
-      line = buff.retrieve_as_string(std::stoi(header_["Content-length"]));
+      line = buff.retrieve_as_string(content_length);
     }
     switch (state_) {
       case PARSE_STATE::REQUEST_LINE:
@@ -166,7 +167,7 @@ bool http_request::parse(buffer &buff) {
       default:
         break;
     }
-    if (state_ != PARSE_STATE::FINISH && buff.readable_bytes()) {
+    if (state_ != PARSE_STATE::FINISH) {
       buff.retrieve(2);
     }
   }

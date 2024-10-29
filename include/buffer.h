@@ -28,9 +28,9 @@ class buffer {
     return *this;
   }
 
-  size_t readable_bytes() { return write_index_ - read_index_; }
-  size_t writeable_bytes() { return buffer_.size() - write_index_; }
-  size_t prepend_bytes() { return read_index_; }
+  size_t readable_bytes() const { return write_index_ - read_index_; }
+  size_t writeable_bytes() const { return buffer_.size() - write_index_; }
+  size_t prepend_bytes() const { return read_index_; }
 
   const char *peek() const { return begin_() + read_index_; }
 

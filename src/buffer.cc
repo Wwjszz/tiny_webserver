@@ -89,6 +89,5 @@ std::pair<bool, std::string> buffer::search(const char* start, size_t len) {
   if (end == write_begin_const_()) {
     return {false, ""};
   }
-  retrieve_until(end);
-  return {true, std::string(peek(), end)};
+  return {true, retrieve_as_string(end - peek())};
 }

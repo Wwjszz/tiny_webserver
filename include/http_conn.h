@@ -29,7 +29,7 @@ class http_conn {
   sockaddr_in addr() const { return addr_; }
   bool process();
 
-  int bytes() const { return 1; }
+  size_t bytes() const { return write_buff_.readable_bytes() + mm_file_len; }
   bool is_keep_alive() const { request_.is_keep_alive(); }
 
   static bool ET;
