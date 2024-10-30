@@ -1,3 +1,0 @@
-/home/tiny_webserver/build/CMakeFiles/webserver.dir
-/home/tiny_webserver/build/CMakeFiles/edit_cache.dir
-/home/tiny_webserver/build/CMakeFiles/rebuild_cache.dir
