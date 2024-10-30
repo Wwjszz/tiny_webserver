@@ -1,1 +1,0 @@
-/opt/rh/gcc-toolset-13/root/usr/bin/c++ -pthread CMakeFiles/log_test.cc.dir/src/log.cc.o CMakeFiles/log_test.cc.dir/src/buffer.cc.o -o log_test.cc 
