@@ -30,7 +30,9 @@ class http_conn {
   bool process();
 
   size_t bytes() const { return write_buff_.readable_bytes() + mm_file_len; }
-  bool is_keep_alive() const { request_.is_keep_alive(); }
+  bool is_keep_alive() const { return request_.is_keep_alive(); }
+
+  void close_();
 
   static bool ET;
   static const char *src_dir;

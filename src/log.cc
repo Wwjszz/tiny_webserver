@@ -13,7 +13,7 @@ log::~log() {
   }
 }
 
-// void log::flush() { fflush(m_fp_); }
+void log::flush() { fflush(m_fp_); }
 
 void log::async_write() {
   std::string str;
@@ -53,7 +53,7 @@ void log::init(int level, const char *path, const char *suffix,
 
   if (max_queue_capacity) {
     is_async = true;
-    deq_ptr_ = std::make_unique<block_queue<std::string>>();
+    deq_ptr_ = std::make_unique<block_queue<std::string>>(max_queue_capacity);
     write_thread_ptr = std::make_unique<std::thread>(flush_log_thread);
   } else {
     is_async = false;

@@ -11,4 +11,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L/usr/lib64/mysql -lmysqlclient -lpthread")
 message(STATUS "CMAKE_CXX_FLAGS = ${CMAKE_CXX_FLAGS}")
 
-add_executable(log_test test/test.cc  src/log.cc src/buffer.cc src/sql_connpool.cc)
+add_executable(webserver main.cpp)
+file(GLOB sources src/*.cc)
+target_sources(webserver PUBLIC ${sources})
+

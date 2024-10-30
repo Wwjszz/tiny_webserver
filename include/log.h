@@ -18,7 +18,7 @@ class log {
   static void flush_log_thread();
 
   void write(int level, const char *format, ...);
-  // void flush();
+  void flush();
 
   bool is_open() { return is_open_; }
 
@@ -64,6 +64,7 @@ class log {
     log *lg = log::instance();                       \
     if (lg->is_open() && lg->get_level() <= level) { \
       lg->write(level, format, ##__VA_ARGS__);       \
+      lg->flush();                                   \
     }                                                \
   } while (0);
 

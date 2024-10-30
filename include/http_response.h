@@ -35,7 +35,7 @@ class http_response {
 
   std::string path_;
   std::string dir_;
-  const std::string real_path() { return path_ + dir_; }
+  const std::string real_path() { return dir_ + path_; }
 
   int code_ = -1;
   bool is_keep_alive_;

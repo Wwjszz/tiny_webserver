@@ -140,16 +140,13 @@ bool http_request::parse(buffer &buff) {
       if (res.first == false) break;
       line = std::move(res.second);
     } else {
-      if (!header_.contains("Content-length")) {
-        state_ = PARSE_STATE::FINISH;
-        break;
-      }
       size_t content_length = std::stoi(header_["Content-length"]);
       if (buff.readable_bytes() < content_length) {
         break;
       }
       line = buff.retrieve_as_string(content_length);
     }
+
     switch (state_) {
       case PARSE_STATE::REQUEST_LINE:
         if (!parse_request_line_(line)) {
@@ -167,8 +164,13 @@ bool http_request::parse(buffer &buff) {
       default:
         break;
     }
+
     if (state_ != PARSE_STATE::FINISH) {
       buff.retrieve(2);
+    }
+
+    if (state_ == PARSE_STATE::BODY && !header_.contains("Content-length")) {
+      state_ = PARSE_STATE::FINISH;
     }
   }
 

@@ -4,11 +4,13 @@
 
 #include "log.h"
 
-bool http_conn::ET = false;
+bool http_conn::ET = true;
 std::atomic<int> http_conn::user_count;
 const char* http_conn::src_dir = nullptr;
 
-http_conn::~http_conn() {
+http_conn::~http_conn() { close_(); }
+
+void http_conn::close_() {
   if (fd_) {
     close(fd_);
     user_count.fetch_sub(1);
@@ -48,6 +50,9 @@ ssize_t http_conn::write(int& save_errno) {
       len = write_buff_.write_fd(fd_, save_errno);
     else {
       len = ::write(fd_, mm_file, mm_file_len);
+      if (len >= 0) {
+        mm_file_len -= len;
+      }
     }
     if (len <= 0) break;
   } while (ET);

@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/tiny_webserver/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/log_test.dir/all
+all: CMakeFiles/webserver.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/log_test.dir/clean
+clean: CMakeFiles/webserver.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/log_test.dir
+# Target rules for target CMakeFiles/webserver.dir
 
 # All Build rule for target.
-CMakeFiles/log_test.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tiny_webserver/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target log_test"
-.PHONY : CMakeFiles/log_test.dir/all
+CMakeFiles/webserver.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tiny_webserver/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target webserver"
+.PHONY : CMakeFiles/webserver.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/log_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tiny_webserver/build/CMakeFiles 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/log_test.dir/all
+CMakeFiles/webserver.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tiny_webserver/build/CMakeFiles 12
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/webserver.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tiny_webserver/build/CMakeFiles 0
-.PHONY : CMakeFiles/log_test.dir/rule
+.PHONY : CMakeFiles/webserver.dir/rule
 
 # Convenience name for target.
-log_test: CMakeFiles/log_test.dir/rule
-.PHONY : log_test
+webserver: CMakeFiles/webserver.dir/rule
+.PHONY : webserver
 
 # clean rule for target.
-CMakeFiles/log_test.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/clean
-.PHONY : CMakeFiles/log_test.dir/clean
+CMakeFiles/webserver.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/clean
+.PHONY : CMakeFiles/webserver.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

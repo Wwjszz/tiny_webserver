@@ -23,7 +23,7 @@ class heap_timer {
     ref_.clear();
   }
   void tick();
-  void pop() { del_(0); }
+  void pop() { del_(1); }
   int get_next_tick();
 
  private:

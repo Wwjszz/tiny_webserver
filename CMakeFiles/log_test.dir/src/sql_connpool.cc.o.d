@@ -249,5 +249,8 @@ CMakeFiles/log_test.dir/src/sql_connpool.cc.o: \
  /opt/rh/gcc-toolset-13/root/usr/include/c++/13/stop_token \
  /opt/rh/gcc-toolset-13/root/usr/include/c++/13/bits/std_thread.h \
  /home/tiny_webserver/include/log.h /home/tiny_webserver/include/buffer.h \
+ /opt/rh/gcc-toolset-13/root/usr/include/c++/13/algorithm \
+ /opt/rh/gcc-toolset-13/root/usr/include/c++/13/bits/ranges_algo.h \
+ /opt/rh/gcc-toolset-13/root/usr/include/c++/13/pstl/glue_algorithm_defs.h \
  /opt/rh/gcc-toolset-13/root/usr/include/c++/13/utility \
  /opt/rh/gcc-toolset-13/root/usr/include/c++/13/bits/stl_relops.h

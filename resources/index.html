@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Welcome to Wwj's Page</title>
+     <style>
+          * {
+               margin: 0;
+               padding: 0;
+               box-sizing: border-box;
+          }
+
+          body {
+               font-family: Arial, sans-serif;
+               background: linear-gradient(to right, #4e54c8, #8f94fb);
+               color: #fff;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               height: 100vh;
+               overflow: hidden;
+          }
+
+          .container {
+               text-align: center;
+               animation: fadeIn 2s ease;
+          }
+
+          h1 {
+               font-size: 4em;
+               margin-bottom: 0.5em;
+               animation: slideIn 1.5s ease;
+               letter-spacing: 5px;
+          }
+
+          p {
+               font-size: 1.5em;
+               margin-bottom: 1.5em;
+               color: #f0f0f0;
+               opacity: 0.8;
+          }
+
+          .button {
+               text-decoration: none;
+               padding: 10px 20px;
+               border: 2px solid #fff;
+               color: #fff;
+               border-radius: 25px;
+               font-size: 1.2em;
+               transition: all 0.3s ease;
+          }
+
+          .button:hover {
+               background-color: #fff;
+               color: #4e54c8;
+          }
+
+          @keyframes fadeIn {
+               from {
+                    opacity: 0;
+               }
+
+               to {
+                    opacity: 1;
+               }
+          }
+
+          @keyframes slideIn {
+               from {
+                    transform: translateY(-30px);
+               }
+
+               to {
+                    transform: translateY(0);
+               }
+          }
+     </style>
+</head>
+
+<body>
+     <div class="container">
+          <h1>Welcome to Wwj's World</h1>
+          <p>I'm Wwj, passionate about creativity and technology.</p>
+          <a href="#" class="button">Explore More</a>
+     </div>
+</body>
+
+</html>

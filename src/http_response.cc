@@ -42,7 +42,7 @@ const std::unordered_map<int, std::string> http_response::CODE_PATH_ = {
 
 void http_response::init(const std::string& dir, const std::string& path,
                          bool is_keep_alive, int code) {
-  if (mm_file) {
+  if (mm_file_) {
     unmap_file();
   }
   dir_ = dir;
@@ -54,7 +54,7 @@ void http_response::init(const std::string& dir, const std::string& path,
 }
 
 void http_response::unmap_file() {
-  if (mm_file) {
+  if (mm_file_) {
     munmap(mm_file_, mm_file_stat_.st_size);
     mm_file_ = nullptr;
   }
